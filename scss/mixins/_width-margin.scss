@@ -1,0 +1,31 @@
+/* Mixins de width. 
+* Se maneja por porcentajes si no se cambia el segundo parametro.
+* Para usar fracciones hay que cambiar el segundo parametro ; tercero para el mixin que es con breakpoints; 
+* a un número mayor que 1 
+**/
+
+//Base
+@mixin width($numerador:100,$denominador:1){
+  @if $denominador <= 1 {
+    width: unquote($numerador + "%");
+  } @else {
+    width: ($numerador / $denominador) * 100%;
+  }
+}
+
+//Con breakpoints
+@mixin breakpoints($size, $numerador:100,$denominador:1) {
+  @media all and (min-width: map-has-key($breakpoints,$size)) {
+    @if $denominador <= 1 {
+      width: unquote($numerador + "%");
+    } @else {
+      width: ($numerador / $denominador) * 100%;
+    }
+  }  
+}
+
+// Mixin para controlar el magin
+@mixin margin($margin) {
+  margin-left  : $margin;
+  margin-right : $margin; 
+}

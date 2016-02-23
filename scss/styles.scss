@@ -1,0 +1,18 @@
+@charset 'UTF-8';
+
+@import url(https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css);
+
+// Compile este archivo en ../css/styles.css
+// Importe en este archivo los partials de css de su proyecto
+
+// Importar variables
+@import 'variables/variables';
+
+// Importar mixins
+@import 'mixins/mixins';
+
+// Importar grid
+@import 'grid/ed-grid';
+
+// Modulos. Los componentes que se repiten en varias partes del proyecto
+@import 'estilos/estilos';

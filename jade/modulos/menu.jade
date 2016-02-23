@@ -1,0 +1,22 @@
+nav
+	ul
+		each lista in ['Item 1', 'Submenu']
+			li:a(href="#")= lista
+
+- var menus = [{text: 'Item 1', link: '#'}, 
+               {text: 'Submenu 2', submenu: [{text: 'sub-2-1', link: '##'}, {text: 'sub-2-2', link: '##'}] }, 
+							 {text: 'Submenu 3', submenu: [{text: 'sub-3-1', link: '##'}, {text: 'sub-3-2', link: '##'}, {text: 'sub-3-3', link: '##'}, {text: 'sub-3-4', link: '##'}] }, 
+							 {text: 'Item 2', link: '#'}];
+
+nav
+	ul
+		each lista in menus
+			li
+				if lista.submenu
+					a(href=lista.link)= lista.text
+					ul
+						each sublista in lista.submenu
+							li
+								a(href=sublista.link)= sublista.text
+				else
+					a(href=lista.link)= lista.text

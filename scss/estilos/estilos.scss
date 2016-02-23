@@ -1,0 +1,12 @@
+// Base (estilos para los elementos html, sin clases ni id)
+  @import "base/base";
+
+// Tema. Los componentes básicos de cualquier proyecto
+  @import "tema/menus";
+  @import "tema/header";
+  @import "tema/footer";
+  @import "tema/main";
+  @import "tema/aside";
+
+// Modulos. Los componentes que se repiten en varias partes del proyecto
+  @import "modulos/modulos";

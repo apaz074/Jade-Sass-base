@@ -1,0 +1,25 @@
+// VARIABLES DE ED GRID
+
+// Ancho máximo de cada grupo
+$max-width: 1200px;
+
+// Separación entre cajas
+$padding: 15px;
+
+// Tamaños. Puede editar los nombres y las
+// medidas, añadir más o quitar.
+$breakpoints: (
+  movil  : 480px,
+  tablet : 768px,
+  web    : 1024px,
+  hd     : 1400px
+);
+
+// Fracciones para los anchos de las cajas.
+// También puede editarlos si desea
+$fracciones: (
+  tercios : 3,
+  sextos  : 6,
+  octavos : 8
+);
+

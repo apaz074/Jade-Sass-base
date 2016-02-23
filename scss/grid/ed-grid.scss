@@ -1,0 +1,12 @@
+// Componentes ED GRID
+// Por favor desactive los que no vaya a usar para mejorar el rendimiento
+// Para hacerlo solo comente la linea correspondiente escribiendo doble slash al inicio
+@import "componentes/base";        // Estilos básicos para RWD
+//@import "componentes/core";        // Núcleo de ED GRID, grupos y cajas
+@import "componentes/desarrollo";  // Modo desarrollo
+//@import "componentes/visibilidad"; // Controlar la visibilidad
+//@import "componentes/utilidades";  // Utilidades adicionales
+@import "componentes/video";       // Videos responsive
+//@import "componentes/flexbox";     // Flexbox
+//@import "componentes/offset";      // Offset
+@import "componentes/class";      // Estilos del layoud con clases 

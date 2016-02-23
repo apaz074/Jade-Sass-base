@@ -1,0 +1,315 @@
+/* 
+Los siguientes mixins y variables son de las siguientes propiedades de Flexbox: 
+flex-direction, flex-wrpa, flex-flow, justify-content, align-items, align-content y align-self.
+*/
+// Variables para los mixins  
+// Para flex-direction.
+$flex-direction:(
+  row      : row,
+  column   : column,
+  reverse  : row-reverse,
+  creverse : column-reverse
+);
+
+// Para flex-wrap.
+$flex-wrap:(
+  nwrap    : nowrap,
+  wrap     : wrap, 
+  wreverse : wrap-reverse
+  );
+
+// Para justify-content.
+$justify-content: (
+  start   : flex-start,
+  end     : flex-end,
+  center  : center,
+  around  : space-around,
+  between : space-between
+);
+
+// Para align-items.
+$align-items: (
+  stretch  : stretch,
+  start    : flex-start,
+  end      : flex-end,
+  center   : center,
+  baseline : baseline
+);
+
+// Para aling-content.
+$align-content: (
+  strech  : stretch,
+  start   : flex-start,
+  end     : flex-end,
+  center  : center,
+  around   : space-around,
+  between : space-between
+);
+
+// Propiedades para los elementos hijos:
+// Para align-self.
+$align-self: (
+  auto     : auto,
+  start    : flex-start,
+  end      : flex-end,
+  center   : center,
+  stretch  : stretch,
+  baseline : baseline
+);
+
+// Mixins.
+// Mixins para modificar propiedades de Flexbox. 
+
+// Usar si solo ocupa cambiar una propiedad de Flexbox.
+@mixin direction($f-direction:column){
+  display        : flex;
+  flex-direction : map-get($flex-direction,$f-direction);
+}
+
+@mixin wrap($f-wrap:wrap){
+  display        : flex;
+  flex-wrap      : map-get($flex-wrap,$f-wrap);
+}
+
+@mixin flow($f-direction,$f-wrap){
+  display        : flex;
+  flex-flow      : map-get($flex-direction,$f-direction) map-get($flex-wrap,$f-wrap);
+}
+
+@mixin justify($j-content){
+  display        : flex;
+  justify-content: map-get($justify-content,$j-content);
+}
+
+@mixin items($a-items){
+  display        : flex;
+  align-items    : map-get($align-items,$a-items);
+}
+
+// Cuando se tiene multi-line. Con wrap como valor por defecto para flex-wrap 
+@mixin align-content($a-content, $flex-wrap:wrap){
+  display        : flex;
+  flex-wrap      : map-get($flex-wrap,$f-wrap);
+  align-content  : map-get($align-content,$a-content);
+}
+
+// Las siguientes combinaciones son aplicadas cuando no es multi-line
+// Combinaciones con flex-wrap. El valor por defecto para flex-wrap de los mixins siguiente es wrap.
+@mixin wrap-justify-items-self($f-wrap,$j-content,$a-items,$a-self){
+  display        : flex;
+  flex-wrap      : map-get($flex-wrap,$f-wrap);
+  justify-content: map-get($justify-content,$j-content);
+  align-items    : map-get($align-items,$a-items);
+  align-self     : map-get($align-self,$a-self); 
+}
+
+@mixin wrap-justify-items($f-wrap,$j-content,$a-items){
+  display        : flex;
+  flex-wrap      : map-get($flex-wrap,$f-wrap);
+  justify-content: map-get($justify-content,$j-content);
+  align-items    : map-get($align-items,$a-items); 
+}
+
+@mixin wrap-justify-self($f-wrap,$j-content,$a-self){
+  display        : flex;
+  flex-wrap      : map-get($flex-wrap,$f-wrap);
+  justify-content: map-get($justify-content,$j-content);
+  align-self     : map-get($align-self,$a-self); 
+}
+
+@mixin wrap-items-self($f-wrap,$a-items,$a-self){
+  display        : flex;
+  flex-wrap      : map-get($flex-wrap,$f-wrap);
+  align-items    : map-get($align-items,$a-items);
+  align-self     : map-get($align-self,$a-self); 
+}
+
+@mixin wrap-justify($f-wrap,$j-content){
+  display        : flex;
+  flex-wrap      : map-get($flex-wrap,$f-wrap);
+  justify-content: map-get($justify-content,$j-content);
+}
+
+@mixin wrap-items($f-wrap,$a-items){
+  display        : flex;
+  flex-wrap      : map-get($flex-wrap,$f-wrap);
+  justify-content: map-get($justify-content,$j-content);
+  align-items    : map-get($align-items,$a-items);
+  align-self     : map-get($align-self,$a-self); 
+}
+
+@mixin wrap-self($f-wrap,$a-self){
+  display        : flex;
+  flex-wrap      : map-get($flex-wrap,$f-wrap);
+  align-self     : map-get($align-self,$a-self); 
+}
+
+// Combinaciones con flex-direction.
+@mixin direction-justify-items-self($f-direction,$j-content,$a-items,$a-self){
+  display        : flex;
+  flex-direction : map-get($flex-direction,$f-direction);
+  justify-content: map-get($justify-content,$j-content);
+  align-items    : map-get($align-items,$a-items);
+  align-self     : map-get($align-self,$a-self); 
+}
+
+@mixin direction-justify-items($f-direction,$j-content,$a-items){
+  display        : flex;
+  flex-direction : map-get($flex-direction,$f-direction);
+  justify-content: map-get($justify-content,$j-content);
+  align-items    : map-get($align-items,$a-items);
+}
+
+@mixin direction-justify-self($f-direction,$j-content,$a-self){
+  display        : flex;
+  flex-direction : map-get($flex-direction,$f-direction);
+  justify-content: map-get($justify-content,$j-content);
+  align-self     : map-get($align-self,$a-self); 
+}
+
+@mixin direction-items-self($f-direction,$a-items,$a-self){
+  display        : flex;
+  flex-direction : map-get($flex-direction,$f-direction);
+  align-items    : map-get($align-items,$a-items);
+  align-self     : map-get($align-self,$a-self); 
+}
+
+@mixin direction-justify($f-direction,$j-content){
+  display        : flex;
+  flex-direction : map-get($flex-direction,$f-direction);
+  justify-content: map-get($justify-content,$j-content);
+}
+
+@mixin direction-items($f-direction:cl,$a-items:st){
+  display        : flex;
+  flex-direction : map-get($flex-direction,$f-direction);
+  align-items    : map-get($align-items,$a-items);
+}
+
+@mixin direction-self($f-direction,$a-self){
+  display        : flex;
+  flex-direction : map-get($flex-direction,$f-direction);
+  align-self     : map-get($align-self,$a-self); 
+}
+
+// Combinaciones con flex-flow. 
+@mixin flow-justify-items-self($f-direction,$f-wrap,$j-content,$a-items,$a-self) {
+  display: flex;
+  flex-flow: map-get($flex-direction,$f-direction) map-get($flex-wrap,$f-wrap);
+  justify-content: map-get($justify-content,$j-content);
+  align-items: map-get($align-items,$a-items);
+  align-self: map-get($align-self,$a-self);
+}
+
+@mixin flow-justify-items($f-direction,$f-wrap,$j-content,$a-items) {
+  display: flex;
+  flex-flow: map-get($flex-direction,$f-direction) map-get($flex-wrap,$f-wrap);
+  justify-content: map-get($justify-content,$j-content);
+  align-items: map-get($align-items,$a-items);
+}
+
+@mixin flow-justify-self($f-direction,$f-wrap,$j-content,$a-self) {
+  display: flex;
+  flex-flow: map-get($flex-direction,$f-direction) map-get($flex-wrap,$f-wrap);
+  justify-content: map-get($justify-content,$j-content);
+  align-self: map-get($align-self,$a-self);
+}
+
+@mixin flow-items-self($f-direction,$f-wrap,$a-items,$a-self) {
+  display: flex;
+  flex-flow: map-get($flex-direction,$f-direction) map-get($flex-wrap,$f-wrap);
+  align-items: map-get($align-items,$a-items);
+  align-self: map-get($align-self,$a-self);
+}
+
+@mixin flow-justify($f-direction,$f-wrap,$j-content) {
+  display: flex;
+  flex-flow: map-get($flex-direction,$f-direction) map-get($flex-wrap,$f-wrap);
+  justify-content: map-get($justify-content,$j-content);
+}
+
+@mixin flow-items($f-direction,$f-wrap,$a-items) {
+  display: flex;
+  flex-flow: map-get($flex-direction,$f-direction) map-get($flex-wrap,$f-wrap);
+  align-items: map-get($align-items,$a-items);
+}
+
+@mixin flow-self($f-direction,$f-wrap,$a-self) {
+  display: flex;
+  flex-flow: map-get($flex-direction,$f-direction) map-get($flex-wrap,$f-wrap);
+  align-self: map-get($align-self,$a-self);
+}
+
+// Combinaciones faltantes de justify-conent.
+@mixin justify-items-self($j-content,$a-items,$a-self){
+  display        : flex;
+  justify-content: map-get($justify-content,$j-content);
+  align-items    : map-get($align-items,$a-items);
+  align-self     : map-get($align-self,$a-self); 
+}
+
+@mixin justify-items($j-content,$a-items){
+  display        : flex;
+  justify-content: map-get($justify-content,$j-content);
+  align-items    : map-get($align-items,$a-items);
+}
+
+@mixin justify-self($j-content,$a-self){
+  display        : flex;
+  justify-content: map-get($justify-content,$j-content);
+  align-self     : map-get($align-self,$a-self); 
+}
+
+// Cuando es multi-line
+/* Combinaciones de align-content
+   Con wrap como valor por defecto para flex-wrap y flex-flow
+*/
+@mixin acontent-direction-justify-self($a-content,$f-direction,$j-content,$a-self) {
+  display: flex;
+  flex-flow: map-get($flex-direction,$f-direction) wrap;
+  justify-content: map-get($justify-content,$j-content);
+  align-content: map-get($align-content,$a-content);
+  align-self: map-get($align-self,$a-self);
+}
+
+@mixin acontent-justify-self($a-content,$j-content,$a-self) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: map-get($justify-content,$j-content);
+  align-content: map-get($align-content,$a-content);
+  align-self: map-get($align-self,$a-self);
+}
+
+@mixin acontent-direction-justify($a-content,$f-direction,$j-content) {
+  display: flex;
+  flex-flow: map-get($flex-direction,$f-direction) wrap;
+  justify-content: map-get($justify-content,$j-content);
+  align-content: map-get($align-content,$a-content);
+}
+
+@mixin acontent-direction-self($a-content,$f-direction,$a-self) {
+  display: flex;
+  flex-flow: map-get($flex-direction,$f-direction) wrap;
+  align-content: map-get($align-content,$a-content);
+  align-self: map-get($align-self,$a-self);
+}
+
+@mixin acontent-justify($a-content,$j-content) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: map-get($justify-content,$j-content);
+  align-content: map-get($align-content,$a-content);
+}
+
+@mixin acontent-self($a-content,$a-self) {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: map-get($align-content,$a-content);
+  align-self: map-get($align-self,$a-self);
+}
+
+@mixin acontent-direction($a-content,$f-direction) {
+  display: flex;
+  flex-flow: map-get($flex-direction,$f-direction) wrap;
+  align-content: map-get($align-content,$a-content);
+}

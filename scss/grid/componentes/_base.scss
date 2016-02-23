@@ -1,0 +1,45 @@
+// RWD Bases
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  @include direction();
+  min-height : 100vh;
+  padding    : 0;
+}
+
+header{
+  width      : 100%;
+  @include padding(1);
+}
+
+.body-content{
+	display   : flex;
+	flex-grow : 1;
+	@include padding(1);
+}
+
+main{
+	flex : 1;
+}
+
+aside{
+  display: none;
+  @include from(tablet) {
+    flex-basis :25%;
+  }
+}
+
+footer{
+  width : 100%;
+  @include padding(1);
+}
+
+// Imágenes responsive
+img {
+  max-width : 100%;
+  height    : auto;
+}
