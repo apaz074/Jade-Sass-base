@@ -74,14 +74,6 @@ gulp.task('jade', function () {
 
 
 /**
-* Recarga el HTML en el navegador.
-* Creado para quienes no usen Jade.
-*/
-gulp.task('html', function() {
-  browserSync.reload();
-});
-
-/**
 * Recarga el navegador
 */
 gulp.task('js', function() {
