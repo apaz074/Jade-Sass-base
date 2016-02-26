@@ -24,8 +24,43 @@
   }  
 }
 
-// Mixin para controlar el magin
-@mixin margin($margin) {
-  margin-left  : $margin;
-  margin-right : $margin; 
+// Multibles combinaciones de margin.
+@mixin margin($top, $right, $bottom, $left) {
+  @if $top + $bottom == 0 {
+    margin-right  : $right;
+    margin-left   : $left;
+  } @else if $right + $left == 0 {
+    margin-top    : $top; 
+    margin-bottom : $bottom;
+  } @else if $top + $right == 0 {
+    margin-bottom : $bottom;
+    margin-left   : $left;
+  } @else if $top + $left == 0 { 
+    margin-right  : $right;
+    margin-bottom : $bottom;
+  } @else if $bottom + $left == 0 {
+    margin-top    : $top; 
+    margin-right  : $right;
+  } @else if $right + $bottom == 0 {
+    margin-top    : $top; 
+    margin-left   : $left;
+  } @else if $top == 0 { 
+    margin-right  : $right;
+    margin-bottom : $bottom;
+    margin-left   : $left;
+  } @else if $right == 0 {
+    margin-top    : $top; 
+    margin-bottom : $bottom;
+    margin-left   : $left;
+  } @else if $bottom == 0 {
+    margin-top    : $top; 
+    margin-right  : $right;
+    margin-left   : $left;
+  } @else if $left == 0 {
+    margin-top    : $top; 
+    margin-right  : $right;
+    margin-bottom : $bottom;
+  } @else {
+    margin : $top $right $bottom $left;
+  }
 }
