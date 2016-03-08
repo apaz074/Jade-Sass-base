@@ -67,7 +67,7 @@ gulp.task('jade', function () {
         .pipe(jade({
             pretty: true
         }))
-        .pipe(gulp.dest('./html'))
+        .pipe(gulp.dest('./'))
         .on('end', browserSync.reload)
         .pipe(notify({ message: 'Tarea de jade esta completada.' }));
 });
@@ -89,7 +89,7 @@ gulp.task('browser-sync', function() {
   browserSync.init({
     port: PORT,
     server: {
-      baseDir: "./html"
+      baseDir: "./"
     },
     ui: {
       port: PORT + 1
